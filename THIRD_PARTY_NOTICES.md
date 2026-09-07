@@ -84,9 +84,10 @@ method, or its source code.
 ## Independent Implementations
 
 The project verifiers, exhaustive implementations, encodings, evidence
-tooling, and search code were written independently from the public
-mathematical definition. Comparing their output with the CPro1 witness does
-not transfer ownership of the upstream witness or software.
+tooling, and search code were written independently from CPro1 implementation
+source, using only the public mathematical definition. Comparing their output
+with the CPro1 witness does not transfer ownership of the upstream witness or
+software.
 
 Project-original software and documentation are licensed under the root MIT
 License. That license does not apply to or relicense the Apache-2.0 fixture.
