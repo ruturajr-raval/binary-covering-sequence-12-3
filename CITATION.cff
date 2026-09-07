@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite the technical report and the archived repository release."
 title: "Exact Determination of the Binary Covering-Sequence Length L(12,3)"
 type: software
-abstract: "Two independently written exhaustive programs exclude every positive binary cyclic sequence length from 1 through 35 for window length 12 and Hamming radius 3. They check 68,719,476,734 raw sequences through 506,526,514 rotation-reversal-complement representatives and find no cover. An attributed 36-bit construction is independently verified, establishing L(12,3) = 36."
+abstract: "Two independently written exhaustive programs exclude every positive binary cyclic sequence length from 1 through 35 for window length 12 and Hamming radius 3. They check 68,719,476,734 raw sequences through 506,526,514 rotation-reversal-complement representatives and find no cover. An attributed 36-bit construction is independently verified, establishing L(12,3) = 36. Project-original material is MIT licensed; data/baseline-36.txt remains under Apache-2.0."
 authors:
   - family-names: "Raval"
     given-names: "Ruturaj R"

@@ -41,8 +41,10 @@ or certificate-based follow-up work.
 The package includes independently written C++ and Rust exhaustive
 implementations, complete logs, toolchain and command metadata, source and
 binary hashes, two evidence checkers, a machine-readable result summary,
-sanitizer and oracle tests, and Python, Rust, and C++ witness verifiers.
-`release-manifest.sha256` authenticates the publication surface.
+sanitizer tests, direct small-range oracles for both optimized exhaustive
+kernels, and Python, Rust, and C++ witness verifiers that are executed during
+retained-evidence validation. `release-manifest.sha256` authenticates the
+publication surface.
 
 Fast replay:
 
@@ -88,15 +90,17 @@ source is copied.
 
 The candidate has passed local mathematical-scope review, adversarial source
 review, independent full replay, Burnside-count review, witness review,
-sanitizer checks, unit tests, lint and formatting checks, package-boundary
-checks, and claim/nonclaim review. No external mathematical or peer review is
-claimed.
+direct-oracle checks, sanitizer checks, unit tests, lint and formatting
+checks, package-boundary checks, and claim/nonclaim review. No external
+mathematical or peer review is claimed.
 
 ## Remaining Work And Next Acceptance Gate
 
 The theorem and retained evidence are complete, but the package is not yet
 released. The next acceptance gate is a clean public-history import, passing
 public CI, a protected immutable tag, complete tagged replay, matching release
+assets verified byte-for-byte against the tag tree, a release PDF matching a
+fresh tagged-source build, remote asset-digest agreement, immutable release
 assets, and durable archival. Later research can pursue proof-assistant
 reconstruction, compact exclusion certificates, classification of optimal
 length-36 sequences, and adjacent parameter cells.

@@ -10,6 +10,7 @@
     }
   ],
   "license": "MIT",
+  "notes": "The MIT license applies to project-original material. The attributed fixture data/baseline-36.txt remains under Apache-2.0, with its source commit, hashes, modification, and license recorded in THIRD_PARTY_NOTICES.md.",
   "keywords": [
     "covering sequences",
     "coding theory",

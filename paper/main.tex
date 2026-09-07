@@ -246,14 +246,17 @@ among worker threads, rejects noncanonical strings, constructs cyclic windows,
 and unions precomputed Hamming-ball bitsets. It records per-length raw counts,
 representative counts, deterministic aggregate checksums, the smallest
 best-uncovered representative under its internal encoding, and elapsed time.
+An independent test harness compares its optimized window, coverage, and
+canonicality kernels with direct definitions for every sequence of lengths
+one through eight.
 
 The second implementation is written in Rust without external crate
 dependencies. It has separate sequence parsing, transformation, canonicality,
 window, coverage, partitioning, and JSON-output code. Its tests compare the
 optimized bitset coverage routine with a direct target-by-target Hamming
 oracle, compare optimized canonicality with complete orbit minimization,
-check small Burnside counts, verify serial/parallel agreement, and validate
-the known length-36 witness.
+check complete small instances, check small Burnside counts, verify
+serial/parallel agreement, and validate the known length-36 witness.
 
 The evidence validators also use separate Burnside implementations. The C++
 checker derives cycle structures by explicit permutation traversal. The Rust
@@ -310,7 +313,9 @@ complete traversal establishes the exclusion.
 \section{The length-36 witness}
 
 The public CPro1 witness, retained in normalized form in the accompanying
-repository, is
+repository, was taken from commit
+\texttt{827f02b4048fc96a6b79f0970c87ca5a54f31f40}, file
+\path{designs/covering-sequence/result-12-3-36-seed1000.txt}. It is
 \[
 \begin{split}
   x={}&010100011011000110111110101110010000.
@@ -357,7 +362,8 @@ The release retains:
 \item independent evidence checkers;
 \item the normalized upper witness and three verifiers;
 \item a machine-readable theorem summary; and
-\item a deterministic package checksum manifest.
+\item a deterministic package checksum manifest; and
+\item tag-bound source and binary asset verification.
 \end{itemize}
 
 The fast retained-evidence replay is:
@@ -375,7 +381,12 @@ python3 tools/run_rust_exhaustive.py \
   --min-length 1 --max-length 35 --threads 12
 \end{verbatim}
 The repository also provides a manually triggered and version-tag-gated
-workflow that performs both complete traversals.
+workflow that performs both complete traversals. For a version tag, a staged
+draft release is checked byte-for-byte against the immutable tag tree, its
+report is matched against a fresh tagged-source build, and it is published
+only after both traversals succeed. The workflow also checks the exact remote
+asset set and GitHub's SHA-256 digests before and after publication, then
+requires the published release to be immutable.
 
 The project repository is
 \begin{center}
@@ -389,8 +400,8 @@ proof. The source and computation remain part of the trusted base. The full
 logs record aggregate results rather than every representative, because a
 complete representative list would be impractically large. Independent
 implementations, independently counted symmetry orbits, exact target
-coverage, source-bound metadata, sanitizer checks, and complete reruns reduce
-but do not eliminate implementation risk.
+coverage, direct small-range kernel oracles, source-bound metadata, sanitizer
+checks, and complete reruns reduce but do not eliminate implementation risk.
 
 No external mathematical or peer review is claimed. The public-source audit
 cannot exclude unpublished, private, deleted, or unindexed work. No
@@ -422,7 +433,11 @@ Y. M. Chee, T. Etzion, H. Ta, and V. K. Vu,
 
 \bibitem{rosin}
 C. D. Rosin,
-\newblock arXiv:2505.23881 (2025).
+\newblock Using reasoning models to generate search heuristics that solve
+open instances of combinatorial design problems,
+\newblock arXiv:2505.23881v1 (2025).
+\newblock \href{https://doi.org/10.48550/arXiv.2505.23881}
+{doi:10.48550/arXiv.2505.23881}.
 
 \bibitem{etzion-2026}
 T. Etzion,

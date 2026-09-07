@@ -15,8 +15,9 @@ Separately written C++ and Rust implementations traverse `68,719,476,734` raw
 sequences through `506,526,514` rotation-reversal-complement representatives
 and find zero covers. All 35 per-length orbit counts agree with two
 independent Burnside calculations. Retained logs, metadata, hashes, evidence
-checkers, sanitizer tests, witness verifiers, and a deterministic manifest
-support replay.
+checkers, direct C++ and Rust small-range oracles, sanitizer tests, executed
+Python, Rust, and C++ witness verifiers, and a deterministic manifest support
+replay.
 
 ### Claim Boundary
 
@@ -29,4 +30,6 @@ timeouts are not used as proof.
 
 The package remains not yet released. Publication requires clean public
 history, passing public CI, a protected immutable tag, complete tagged replay,
-matching release assets, and durable archival.
+release assets verified against the immutable tag tree, a byte-identical
+tagged-source report build, remote digest agreement, immutable published
+assets, and durable archival.

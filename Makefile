@@ -5,6 +5,10 @@ CARGO ?= cargo
 FULL_REPLAY_MIN ?= 1
 FULL_REPLAY_MAX ?= 35
 FULL_REPLAY_THREADS ?= 4
+SOURCE_DATE_EPOCH ?= 0
+FORCE_SOURCE_DATE ?= 1
+RELEASE_REF ?= HEAD
+RELEASE_TAG ?=
 
 .PHONY: all test test-python test-rust test-search test-exhaustive \
 	test-exhaustive-sanitize \
@@ -26,6 +30,10 @@ build/search: src/search.cpp
 build/exhaustive: src/exhaustive.cpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -pthread $< -o $@
+
+build/test-exhaustive-oracle: tests/exhaustive_oracle.cpp src/exhaustive.cpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -pthread tests/exhaustive_oracle.cpp -o $@
 
 rust-verifier/target/release/binary-covering-sequence-verifier: \
 		rust-verifier/Cargo.toml rust-verifier/Cargo.lock \
@@ -59,8 +67,9 @@ test-search: build/search
 	! build/search --length 35 \
 		--verify 010100011011000110111110101110010000 >/dev/null
 
-test-exhaustive: build/exhaustive \
+test-exhaustive: build/exhaustive build/test-exhaustive-oracle \
 		rust-exhaustive/target/release/binary-covering-sequence-exhaustive
+	build/test-exhaustive-oracle
 	build/exhaustive 1 18 2 > build/cpp-exhaustive-smoke.jsonl
 	$(PYTHON) tools/check_exhaustive_evidence.py \
 		--log build/cpp-exhaustive-smoke.jsonl \
@@ -84,7 +93,8 @@ test-exhaustive-sanitize:
 		--log build/exhaustive-sanitize.jsonl \
 		--min-length 1 --max-length 20
 
-test-evidence:
+test-evidence: build/search \
+		rust-verifier/target/release/binary-covering-sequence-verifier
 	$(PYTHON) tools/check_exhaustive_evidence.py \
 		--log evidence/cpp-exhaustive-1-35.jsonl \
 		--metadata evidence/cpp-exhaustive-1-35.json \
@@ -169,9 +179,13 @@ check-text:
 
 paper:
 	mkdir -p build/paper
-	pdflatex -halt-on-error -interaction=nonstopmode \
+	SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH) \
+		FORCE_SOURCE_DATE=$(FORCE_SOURCE_DATE) \
+		pdflatex -halt-on-error -interaction=nonstopmode \
 		-output-directory=build/paper paper/main.tex
-	pdflatex -halt-on-error -interaction=nonstopmode \
+	SOURCE_DATE_EPOCH=$(SOURCE_DATE_EPOCH) \
+		FORCE_SOURCE_DATE=$(FORCE_SOURCE_DATE) \
+		pdflatex -halt-on-error -interaction=nonstopmode \
 		-output-directory=build/paper paper/main.tex
 
 release-manifest:
@@ -181,10 +195,14 @@ verify-release-manifest:
 	$(PYTHON) tools/release_manifest.py --check
 
 release-assets: all paper
-	$(PYTHON) tools/build_release_assets.py
+	$(PYTHON) tools/build_release_assets.py \
+		--ref "$(RELEASE_REF)" \
+		$(if $(RELEASE_TAG),--tag "$(RELEASE_TAG)")
 
 verify-release-assets:
-	$(PYTHON) tools/build_release_assets.py --check
+	$(PYTHON) tools/build_release_assets.py --check \
+		--ref "$(RELEASE_REF)" \
+		$(if $(RELEASE_TAG),--tag "$(RELEASE_TAG)")
 
 clean:
 	rm -rf build rust-verifier/target rust-exhaustive/target

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -35,6 +36,72 @@ def check_file(record: dict, path_key: str, hash_key: str) -> Path:
     if sha256(path) != record[hash_key]:
         raise ValueError("{} hash does not match".format(record[path_key]))
     return path
+
+
+def run_checked(command: list[str]) -> str:
+    result = subprocess.run(
+        command,
+        cwd=ROOT,
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if result.returncode != 0:
+        raise ValueError(
+            "{} failed: {}".format(command[0], result.stderr.strip())
+        )
+    return result.stdout
+
+
+def verify_native_witness_paths(witness_path: Path, witness: str) -> None:
+    cpp_output = run_checked(
+        [
+            str(ROOT / "build" / "search"),
+            "--length",
+            "36",
+            "--verify",
+            witness,
+        ]
+    )
+    cpp_payload = json.loads(cpp_output)
+    if (
+        cpp_payload.get("valid") is not True
+        or cpp_payload.get("covered") != 4096
+        or cpp_payload.get("uncovered") != 0
+    ):
+        raise ValueError("C++ witness verification does not match")
+
+    rust_output = run_checked(
+        [
+            str(
+                ROOT
+                / "rust-verifier"
+                / "target"
+                / "release"
+                / "binary-covering-sequence-verifier"
+            ),
+            "--n",
+            "12",
+            "--radius",
+            "3",
+            "--expected-length",
+            "36",
+            "--file",
+            str(witness_path),
+        ]
+    )
+    rust_values = dict(
+        line.split("=", 1)
+        for line in rust_output.splitlines()
+        if "=" in line
+    )
+    if (
+        rust_values.get("result") != "PASS"
+        or rust_values.get("covering_radius") != "3"
+        or rust_values.get("uncovered_count") != "0"
+    ):
+        raise ValueError("Rust witness verification does not match")
 
 
 def main() -> int:
@@ -135,6 +202,7 @@ def main() -> int:
             != upper.get("uncovered_targets")
         ):
             raise ValueError("upper-bound verification does not match")
+        verify_native_witness_paths(witness_path, witness)
 
         for record in summary["closest_noncovering_representatives"]:
             row = cpp_rows[record["length"]]
@@ -153,6 +221,12 @@ def main() -> int:
             raise ValueError("orbit-count cross-check total does not match")
         if cross_checks.get("burnside_counts_match") is not True:
             raise ValueError("Burnside cross-check is not recorded")
+        if cross_checks.get("witness_verifiers") != [
+            "Python",
+            "Rust",
+            "C++",
+        ]:
+            raise ValueError("witness verifier list does not match")
     except (KeyError, OSError, UnicodeError, ValueError) as error:
         print("error: {}".format(error), file=sys.stderr)
         return 1

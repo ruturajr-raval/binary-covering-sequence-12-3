@@ -42,7 +42,10 @@ That interval is attributed prior art, not a result of this project.
 
 Christopher D. Rosin reports a `(12,3,36)` construction in:
 
+- "Using Reasoning Models to Generate Search Heuristics that Solve Open
+  Instances of Combinatorial Design Problems"
 - arXiv:2505.23881v1
+- DOI: `10.48550/arXiv.2505.23881`
 - https://arxiv.org/abs/2505.23881
 
 The exact witness and construction source are maintained in:

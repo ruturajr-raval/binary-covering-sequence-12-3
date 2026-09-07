@@ -61,8 +61,9 @@ covering radius = 3
 uncovered targets = 0
 ```
 
-Python, Rust, and C++ verifiers independently reproduce these facts.
-Therefore
+Python and Rust independently reproduce every listed value. The C++ verifier
+independently confirms validity, all 4,096 covered targets, and zero uncovered
+targets at radius 3. Therefore
 
 ```text
 L(12,3) <= 36.

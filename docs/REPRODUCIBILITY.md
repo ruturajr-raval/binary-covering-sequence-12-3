@@ -82,6 +82,12 @@ The default test suite reruns both exhaustive implementations on lengths
 make test-exhaustive
 ```
 
+Before those smoke traversals, a standalone C++ oracle test compares the
+optimized cyclic-window, coverage, and canonicality kernels with direct
+definitions for every one of the 510 sequences of lengths 1 through 8. The
+Rust test suite performs corresponding direct target-based coverage and full
+orbit-minimization checks.
+
 The C++ source can also be checked with address and undefined-behavior
 sanitizers on a supported toolchain:
 
@@ -175,14 +181,23 @@ by fixed 4,096-bit sets and candidates are processed in streaming order.
 The GitHub `full-replay` workflow recomputes both complete traversals when
 manually dispatched and whenever a version tag is pushed. The original
 macOS arm64 evidence binaries are release assets whose SHA-256 values match
-the binary hashes in the retained metadata.
+the binary hashes in the retained metadata. For a version tag, the workflow
+also downloads the staged draft-release assets, verifies their checksums and
+source archive byte-for-byte against the immutable tag tree, rebuilds the
+report and requires an exact staged-PDF match, and publishes the release only
+after both full traversals pass. The workflow requires the exact remote asset
+set, compares GitHub's recorded SHA-256 digest for every asset before and
+after publication, and requires GitHub to report the published release as
+immutable.
 
 ## Trust Boundary
 
 The C++ and Rust enumerators are independent at the implementation level.
 The two evidence checkers use separate Burnside formulas. Direct target-based
-oracles test the optimized Rust coverage kernel, and the C++ run has sanitizer
-coverage on reduced ranges.
+and full-orbit oracles test both optimized exhaustive kernels, and the C++
+run also has sanitizer coverage on reduced ranges. Retained-evidence
+validation executes all three independent witness verifiers rather than
+trusting a recorded verifier list.
 
 The computation is still trusted code rather than a proof-assistant kernel.
 The retained logs do not list every representative because that would be

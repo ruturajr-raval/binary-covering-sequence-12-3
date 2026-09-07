@@ -67,10 +67,12 @@ The lower-bound computation has two independently implemented enumeration
 paths. Each traverses the complete raw space, tests one
 rotation-reversal-complement representative per orbit, constructs exact
 cyclic windows, and unions exact radius-3 Hamming balls over all 4,096
-targets. Independent evidence checkers verify the raw counts, two separately
-implemented Burnside formulas, source and log hashes, metadata, and the
-reported closest noncovers. The upper witness has three independent verifier
-paths. Retained evidence is documented in `evidence/README.md` and bound by
+targets. Direct target-based and full-orbit oracles check the optimized C++
+and Rust kernels on complete small instances. Independent evidence checkers
+verify the raw counts, two separately implemented Burnside formulas, source
+and log hashes, metadata, and the reported closest noncovers. Retained
+evidence validation also executes the Python, Rust, and C++ witness paths.
+The evidence is documented in `evidence/README.md` and bound by
 `release-manifest.sha256`. The complete traversals are CPU-bound, use a
 configurable multicore worker count, require no GPU, and are suitable for a
 commodity multicore workstation. The retained 12-thread runs completed in
@@ -245,9 +247,14 @@ load. The retained logs record the actual build and run metadata for the
 published computations.
 
 The `full-replay` workflow runs both complete traversals on manual dispatch
-and on every version tag. The two original macOS arm64 evidence binaries are
-planned as GitHub release assets so their SHA-256 values can be checked
-against the retained metadata.
+and on every version tag. For a tag, it verifies a staged draft release
+against the immutable tag tree, rebuilds the report from that tree and checks
+the staged PDF byte-for-byte, and publishes the release only after the C++
+and Rust full replays succeed. It requires the exact remote asset set, checks
+GitHub's SHA-256 digests before and after publication, and requires release
+immutability after publication. The two original macOS arm64 evidence
+binaries are planned as versioned GitHub release assets so their SHA-256
+values can be checked against the retained metadata.
 
 ## Repository Layout
 
@@ -289,8 +296,11 @@ python3 tools/check_result_summary.py
 The root MIT License covers project-original software and documentation.
 `data/baseline-36.txt` is an attributed normalized copy of the public CPro1
 result and remains under Apache License 2.0. No CPro1 implementation source is
-copied. See `THIRD_PARTY_NOTICES.md` for commit, path, source hash, normalized
-hash, and modification details.
+copied. Its source is CPro1 commit
+`827f02b4048fc96a6b79f0970c87ca5a54f31f40`, path
+`designs/covering-sequence/result-12-3-36-seed1000.txt`. See
+`THIRD_PARTY_NOTICES.md` for the source hash, normalized hash, and
+modification details.
 
 ## References
 
@@ -299,7 +309,9 @@ hash, and modification details.
 2. Y. M. Chee, T. Etzion, H. Ta, and V. K. Vu, "Constructions of Covering
    Sequences and 2D-Sequences", Designs, Codes and Cryptography 93 (2025),
    5445-5471, DOI `10.1007/s10623-025-01726-5`.
-3. C. D. Rosin, arXiv:2505.23881 (2025).
+3. C. D. Rosin, "Using Reasoning Models to Generate Search Heuristics that
+   Solve Open Instances of Combinatorial Design Problems",
+   arXiv:2505.23881v1 (2025), DOI `10.48550/arXiv.2505.23881`.
 4. T. Etzion, "Covering Sequences and Covering-Sequences Codes",
    arXiv:2607.14840.
 5. H. Ta and V. K. Vu, "Near-Optimal Covering Sequences",

@@ -67,8 +67,8 @@ directly after publication.
 
 | Release asset | SHA-256 |
 | --- | --- |
-| `binary-covering-sequence-12-3-cpp-exhaustive-macos-arm64` | `f15b004f88447ce3484457d22b9168e409c671b99ba6c0f9371527fb777838f8` |
-| `binary-covering-sequence-12-3-rust-exhaustive-macos-arm64` | `f2198f1d83b7a1cf8988d095f6e442436e3f5183887e664f236c048072912432` |
+| `binary-covering-sequence-12-3-cpp-exhaustive-v0.1.0-macos-arm64` | `f15b004f88447ce3484457d22b9168e409c671b99ba6c0f9371527fb777838f8` |
+| `binary-covering-sequence-12-3-rust-exhaustive-v0.1.0-macos-arm64` | `f2198f1d83b7a1cf8988d095f6e442436e3f5183887e664f236c048072912432` |
 
 After downloading those assets into the project root, authenticate them with:
 
@@ -76,12 +76,12 @@ After downloading those assets into the project root, authenticate them with:
 python3 tools/check_exhaustive_evidence.py \
   --log evidence/cpp-exhaustive-1-35.jsonl \
   --metadata evidence/cpp-exhaustive-1-35.json \
-  --binary binary-covering-sequence-12-3-cpp-exhaustive-macos-arm64 \
+  --binary binary-covering-sequence-12-3-cpp-exhaustive-v0.1.0-macos-arm64 \
   --min-length 1 --max-length 35
 python3 tools/check_rust_exhaustive_evidence.py \
   --log evidence/rust-exhaustive-1-35.json \
   --metadata evidence/rust-exhaustive-1-35.metadata.json \
-  --binary binary-covering-sequence-12-3-rust-exhaustive-macos-arm64 \
+  --binary binary-covering-sequence-12-3-rust-exhaustive-v0.1.0-macos-arm64 \
   --min-length 1 --max-length 35
 ```
 
@@ -112,6 +112,11 @@ Run the small-range implementation checks:
 make test-exhaustive
 ```
 
+This exhaustively compares the optimized C++ window, coverage, and
+canonicality kernels with direct definitions for every sequence of lengths
+1 through 8. The Rust tests independently compare optimized coverage and
+canonicality with direct implementations on complete small instances.
+
 Recompute the complete searches:
 
 ```bash
@@ -132,7 +137,7 @@ fails closed rather than silently accepting a mismatched pair.
 This is a reproducible computational exclusion, not a formally verified
 proof. Its strongest safeguards are complete raw-space traversal, independent
 implementations, independent Burnside orbit counts, source- and log-bound
-metadata, direct replay of reported nearcovers, and three independent checks
-of the length-36 witness. External mathematical review has not been
-completed, and the public novelty audit cannot exclude unpublished or
-unindexed work.
+metadata, direct small-range kernel oracles, direct replay of reported
+nearcovers, and three executed checks of the length-36 witness. External
+mathematical review has not been completed, and the public novelty audit
+cannot exclude unpublished or unindexed work.

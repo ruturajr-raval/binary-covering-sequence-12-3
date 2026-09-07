@@ -33,7 +33,10 @@ redistributed.
 
 This repository cites the CPro1 construction paper by Christopher D. Rosin:
 
+- "Using Reasoning Models to Generate Search Heuristics that Solve Open
+  Instances of Combinatorial Design Problems"
 - arXiv:2505.23881v1
+- DOI: `10.48550/arXiv.2505.23881`
 - https://arxiv.org/abs/2505.23881
 
 No paper text, figure, table image, or source archive is redistributed.
@@ -48,6 +51,8 @@ software are maintained by the Constructive-Codes project:
   `827f02b4048fc96a6b79f0970c87ca5a54f31f40`
 - Witness path:
   `designs/covering-sequence/result-12-3-36-seed1000.txt`
+- Result history commit:
+  `5b26b1a5ca0625a857cf6c2adcc6668e1d66a2ac`
 - Upstream raw-file SHA-256:
   `2fbbf39ccfa94ca3c0af465a51042d97152b94a6dc435057e1989cfa67d1a610`
 - Normalized local fixture: `data/baseline-36.txt`
