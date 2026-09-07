@@ -4,7 +4,7 @@
   "author": "Ruturaj R Raval",
   "affiliation": "Independent Researcher",
   "orcid": "0000-0003-4930-8981",
-  "status": "exact theorem, not yet released",
+  "status": "exact theorem released as v0.1.0",
   "target": {
     "type": "exact value",
     "object": "The minimum positive cyclic binary covering-sequence length L(12,3)"
@@ -36,6 +36,13 @@
     "covering_radius": 3,
     "uncovered_targets": 0,
     "provenance": "Attributed to the public CPro1 construction"
+  },
+  "release": {
+    "tag": "v0.1.0",
+    "date": "2026-09-07",
+    "audited_commit": "4a0475571637634067e68b4ab80cb972833c48b4",
+    "version_doi": "10.5281/zenodo.22639692",
+    "concept_doi": "10.5281/zenodo.22639691"
   },
   "limitations": [
     "The exhaustive implementations are independently tested but not formally verified.",

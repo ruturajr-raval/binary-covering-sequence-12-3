@@ -2,8 +2,8 @@
 
 ## Status
 
-The source is submission-ready after the immutable release and archive
-identifiers are inserted. No arXiv identifier is currently assigned.
+The source is submission-ready. The immutable GitHub release and Zenodo
+archive identifiers are assigned. No arXiv identifier is currently assigned.
 
 ## Title
 
@@ -35,7 +35,8 @@ bit complement reduce 68,719,476,734 raw sequences to 506,526,514
 representatives. The C++ and Rust traversals find no covering representative,
 and every per-length representative count agrees with independent Burnside
 calculations. Three verifier implementations confirm that the attributed
-36-bit construction has covering radius exactly 3. Therefore `L(12,3)=36`.
+36-bit construction covers at radius 3; the Python and Rust verifiers also
+confirm that its covering radius is exactly 3. Therefore `L(12,3)=36`.
 The complete source, logs, metadata, hashes, and replay tools are retained in
 the accompanying repository.
 
@@ -52,8 +53,12 @@ https://github.com/ruturajr-raval/binary-covering-sequence-12-3
 
 ## Archive
 
-The version and concept DOI fields will be added after the first immutable
-Zenodo archive is published.
+- GitHub release:
+  `https://github.com/ruturajr-raval/binary-covering-sequence-12-3/releases/tag/v0.1.0`
+- Audited release commit:
+  `4a0475571637634067e68b4ab80cb972833c48b4`
+- Version DOI: `10.5281/zenodo.22639692`
+- Stable concept DOI: `10.5281/zenodo.22639691`
 
 ## License Plan
 
@@ -66,11 +71,10 @@ paper source archive.
 
 Before submission:
 
-1. insert the immutable release URL and DOI;
-2. build the exact source archive from a clean release checkout;
-3. let arXiv compile the source;
-4. inspect every page of the generated PDF;
-5. verify equations, tables, references, links, and line wrapping;
-6. confirm the author name, Independent Researcher affiliation, and ORCID;
-7. confirm the category and irrevocable license choice; and
-8. replace any remaining unassigned-identifier wording.
+1. build the exact source archive from a clean maintained-main checkout;
+2. let arXiv compile the source;
+3. inspect every page of the generated PDF;
+4. verify equations, tables, references, links, and line wrapping;
+5. confirm the author name, Independent Researcher affiliation, and ORCID;
+6. confirm the category and irrevocable license choice; and
+7. replace any remaining unassigned preprint-identifier wording.

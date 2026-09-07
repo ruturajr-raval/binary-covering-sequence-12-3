@@ -1,10 +1,10 @@
 # Release Notes
 
-## Unreleased
+## [v0.1.0](https://github.com/ruturajr-raval/binary-covering-sequence-12-3/releases/tag/v0.1.0) - 2026-09-07
 
 ### Result
 
-The current candidate establishes the exact computer-assisted theorem
+This release establishes the exact computer-assisted theorem
 `L(12,3) = 36`. It exhaustively excludes every positive binary sequence
 length from 1 through 35 and independently verifies the attributed 36-bit
 witness.
@@ -26,11 +26,20 @@ classification of all optimal sequences, external mathematical review, and
 priority over unpublished work are not claimed. Nearcovers and solver
 timeouts are not used as proof.
 
-### Next Gate
+### Release And Archive
 
-The package remains not yet released. Publication requires clean public
-history and public CI, which now pass, followed by a protected immutable tag,
-complete tagged replay, release assets verified against the immutable tag
-tree, a byte-identical tagged-source report build, remote digest agreement,
-immutable published assets, and publication of reserved Zenodo draft
-metadata.
+- Tagged release:
+  `https://github.com/ruturajr-raval/binary-covering-sequence-12-3/releases/tag/v0.1.0`
+- Audited release commit:
+  `4a0475571637634067e68b4ab80cb972833c48b4`
+- Public tag CI: `34102838139`
+- Full tagged replay and release workflow: `34102838143`
+- Version DOI: `10.5281/zenodo.22639692`
+- Stable concept DOI: `10.5281/zenodo.22639691`
+
+The protected tag points at the audited commit. GitHub reports the published
+release as immutable. The tagged workflow rebuilt the report from the tag,
+verified all five assets and GitHub SHA-256 digests, and published only after
+the independent C++ and Rust complete traversals passed. The five Zenodo files
+were subsequently downloaded and matched against the local release set by
+size, MD5, and SHA-256.

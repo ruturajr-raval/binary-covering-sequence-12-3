@@ -1,5 +1,7 @@
 # Exact Binary Covering-Sequence Length `L(12,3)`
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22639691.svg)](https://doi.org/10.5281/zenodo.22639691)
+
 ## Project Overview
 
 ### Project Metadata
@@ -13,9 +15,9 @@
 | Problem | Determine the binary cyclic covering-sequence length `L(12,3)` |
 | Current result | Exact computer-assisted theorem `L(12,3) = 36` |
 | Result type | Complete finite exclusion through length 35 plus a verified length-36 witness |
-| Release | not yet released |
-| Version DOI | not yet assigned |
-| Concept DOI | not yet assigned |
+| Release | `v0.1.0` |
+| Version DOI | `10.5281/zenodo.22639692` |
+| Concept DOI | `10.5281/zenodo.22639691` |
 | License | MIT for project-original material; Apache-2.0 for the attributed witness fixture |
 
 ### Problem And Context
@@ -94,17 +96,30 @@ unresolved parameters.
 
 ### Release, Citation, And Author
 
-This package is not yet released or archived. The canonical repository is
+The public repository is
 [`ruturajr-raval/binary-covering-sequence-12-3`](https://github.com/ruturajr-raval/binary-covering-sequence-12-3).
-Release and archive identifiers will be recorded only after publication.
-Citation metadata is in `CITATION.cff`, the release dossier is in
-`PUBLICATION.md`, and release history is in `RELEASE_NOTES.md`.
+The immutable tagged release is
+[`v0.1.0`](https://github.com/ruturajr-raval/binary-covering-sequence-12-3/releases/tag/v0.1.0)
+at audited release commit
+`4a0475571637634067e68b4ab80cb972833c48b4`. It is archived at
+version DOI `10.5281/zenodo.22639692`; the stable all-versions DOI is
+`10.5281/zenodo.22639691`.
+
+Public tag CI `34102838139` rebuilt and checked the tagged package. Full
+replay and release workflow `34102838143` independently recomputed the C++
+and Rust exclusions, rebuilt the report from the tag, verified all staged
+asset digests, and published the release only after every gate passed. GitHub
+reports the release as immutable. Zenodo contains the same five release files,
+which were downloaded and checked byte-for-byte against the local release
+set.
 
 Project-original code, evidence tooling, and documentation are MIT licensed.
 The attributed CPro1 witness fixture remains under Apache-2.0; its provenance
 and full license text are retained in `THIRD_PARTY_NOTICES.md` and
 `LICENSES/Apache-2.0.txt`. The author is Ruturaj R Raval, with affiliation
 Independent Researcher and ORCID `0000-0003-4930-8981`.
+Citation metadata is in `CITATION.cff`, the release dossier is in
+`PUBLICATION.md`, and release history is in `RELEASE_NOTES.md`.
 
 ## Theorem
 
@@ -254,7 +269,7 @@ the staged PDF byte-for-byte, and publishes the release only after the C++
 and Rust full replays succeed. It requires the exact remote asset set, checks
 GitHub's SHA-256 digests before and after publication, and requires release
 immutability after publication. The two original macOS arm64 evidence
-binaries are planned as versioned GitHub release assets so their SHA-256
+binaries are published as versioned GitHub release assets so their SHA-256
 values can be checked against the retained metadata.
 
 ## Repository Layout
