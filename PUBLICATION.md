@@ -96,14 +96,15 @@ mathematical or peer review is claimed.
 
 ## Remaining Work And Next Acceptance Gate
 
-The theorem and retained evidence are complete, but the package is not yet
-released. The next acceptance gate is a clean public-history import, passing
-public CI, a protected immutable tag, complete tagged replay, matching release
-assets verified byte-for-byte against the tag tree, a release PDF matching a
-fresh tagged-source build, remote asset-digest agreement, immutable release
-assets, and durable archival. Later research can pursue proof-assistant
-reconstruction, compact exclusion certificates, classification of optimal
-length-36 sequences, and adjacent parameter cells.
+The theorem, retained evidence, clean public history, and public CI are
+complete. Archive identifier reservation is also complete. The remaining
+acceptance gate is the protected immutable tag, complete tagged replay,
+matching release assets verified byte-for-byte against the tag tree, a
+release PDF matching a fresh tagged-source build, remote asset-digest
+agreement, immutable published assets, and publication of the reserved
+Zenodo archive. Later research can pursue proof-assistant reconstruction,
+compact exclusion certificates, classification of optimal length-36
+sequences, and adjacent parameter cells.
 
 ## Public Summary
 
@@ -114,8 +115,8 @@ these results establish the computer-assisted theorem `L(12,3) = 36`.
 
 ## Archive And Citation
 
-The package is not yet released or archived, and its version and concept
-identifiers remain unassigned. `CITATION.cff` contains the planned citation
-metadata and `RELEASE_NOTES.md` records the current unreleased state. Archive
-identifiers and immutable release details will be added only after those
-records exist.
+The package is not yet released or archived. Its reserved archive identifiers
+remain unpublished. `CITATION.cff` contains the planned citation metadata and
+`RELEASE_NOTES.md` records the current unreleased state. The immutable tag
+commit, replay runs, asset hashes, and published archive audit will be added
+after those records exist.

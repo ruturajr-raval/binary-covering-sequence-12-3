@@ -44,7 +44,9 @@ and with independent Burnside calculations. The attributed 36-bit sequence
 ```
 
 has 36 distinct cyclic windows, covering radius exactly 3, and no uncovered
-target. Python, Rust, and C++ verifiers agree. Together these results establish
+target. Python and Rust reproduce every listed value. C++ independently
+confirms all 4,096 targets covered and zero uncovered targets at radius 3.
+Together these results establish
 
 ```text
 L(12,3) = 36.
@@ -92,8 +94,7 @@ unresolved parameters.
 
 ### Release, Citation, And Author
 
-This package is not yet released or archived. The planned canonical
-repository is
+This package is not yet released or archived. The canonical repository is
 [`ruturajr-raval/binary-covering-sequence-12-3`](https://github.com/ruturajr-raval/binary-covering-sequence-12-3).
 Release and archive identifiers will be recorded only after publication.
 Citation metadata is in `CITATION.cff`, the release dossier is in

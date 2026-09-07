@@ -29,7 +29,8 @@ timeouts are not used as proof.
 ### Next Gate
 
 The package remains not yet released. Publication requires clean public
-history, passing public CI, a protected immutable tag, complete tagged replay,
-release assets verified against the immutable tag tree, a byte-identical
-tagged-source report build, remote digest agreement, immutable published
-assets, and durable archival.
+history and public CI, which now pass, followed by a protected immutable tag,
+complete tagged replay, release assets verified against the immutable tag
+tree, a byte-identical tagged-source report build, remote digest agreement,
+immutable published assets, and publication of reserved Zenodo draft
+metadata.

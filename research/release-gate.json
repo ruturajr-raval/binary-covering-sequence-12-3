@@ -18,10 +18,18 @@
     "limitations_documented": true,
     "license_and_provenance_audited": true,
     "candidate_clean_checkout_replay_passes": true,
-    "public_ci_passes": false,
+    "public_ci_passes": true,
+    "protected_version_tag_ruleset_active": true,
+    "release_immutability_enabled": true,
+    "remote_release_digest_gate_ready": true,
+    "zenodo_doi_reserved": true,
     "public_full_replay_passes": false,
     "external_mathematical_review_completed": false
   },
-  "decision": "release candidate",
-  "reason": "The exact theorem has passed local mathematical and implementation review plus clean-checkout workbench CI. Public CI, protected-tag replay, release-asset verification, and durable archival remain before the immutable release."
+  "decision": "approved for protected tag and full replay",
+  "tag_ruleset_id": 22432924,
+  "zenodo_draft_id": 22639692,
+  "reserved_version_doi": "10.5281/zenodo.22639692",
+  "reserved_concept_doi": "10.5281/zenodo.22639691",
+  "reason": "The exact theorem, direct kernel oracles, independent C++ and Rust traversals, public CI, clean public history, protected-tag ruleset, immutable-release setting, remote digest gate, and reserved Zenodo identifiers pass. The tag-triggered complete replays, immutable GitHub release, and publication of the reserved Zenodo archive remain post-tag gates."
 }
