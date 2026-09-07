@@ -12,7 +12,8 @@ FULL_REPLAY_THREADS ?= 4
 	verify-baseline verify-exact-result \
 	sat-smoke sat-compact-smoke sat-guarded-smoke compact-sat-35 \
 	guarded-sat-35 check-text paper \
-	release-manifest verify-release-manifest clean
+	release-manifest verify-release-manifest \
+	release-assets verify-release-assets clean
 
 all: build/search build/exhaustive \
 	rust-verifier/target/release/binary-covering-sequence-verifier \
@@ -178,6 +179,12 @@ release-manifest:
 
 verify-release-manifest:
 	$(PYTHON) tools/release_manifest.py --check
+
+release-assets: all paper
+	$(PYTHON) tools/build_release_assets.py
+
+verify-release-assets:
+	$(PYTHON) tools/build_release_assets.py --check
 
 clean:
 	rm -rf build rust-verifier/target rust-exhaustive/target

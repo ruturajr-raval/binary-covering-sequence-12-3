@@ -61,9 +61,9 @@ calculation performed by the evidence checkers.
 
 The metadata files also bind the build commands, run commands, toolchain
 versions, source hashes, binary hashes, thread counts, and log hashes.
-The original macOS arm64 C++ and Rust binaries are published as versioned
+The original macOS arm64 C++ and Rust binaries are prepared as versioned
 GitHub release assets, allowing the recorded binary hashes to be checked
-directly.
+directly after publication.
 
 | Release asset | SHA-256 |
 | --- | --- |
