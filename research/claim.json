@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "project": "binary-covering-sequence-12-3",
+  "author": "Ruturaj R Raval",
+  "affiliation": "Independent Researcher",
+  "orcid": "0000-0003-4930-8981",
+  "status": "exact theorem, not yet released",
+  "target": {
+    "type": "exact value",
+    "object": "The minimum positive cyclic binary covering-sequence length L(12,3)"
+  },
+  "problem": {
+    "alphabet": "binary",
+    "window_length": 12,
+    "radius": 3,
+    "length_convention": "positive cyclic length with all window indices reduced modulo the sequence length"
+  },
+  "current_supported_claim": {
+    "statement": "The exact binary cyclic covering-sequence length for window length 12 and Hamming radius 3 is L(12,3) = 36.",
+    "lower_bound": "Two independent exhaustive traversals exclude every positive length from 1 through 35.",
+    "upper_bound": "The attributed 36-bit CPro1 witness has covering radius exactly 3."
+  },
+  "lower_bound_evidence": {
+    "raw_sequences": 68719476734,
+    "symmetry_representatives": 506526514,
+    "covering_representatives": 0,
+    "cpp_log": "evidence/cpp-exhaustive-1-35.jsonl",
+    "rust_log": "evidence/rust-exhaustive-1-35.json",
+    "result_summary": "evidence/result-summary.json"
+  },
+  "upper_bound_evidence": {
+    "sequence_file": "data/baseline-36.txt",
+    "sequence": "010100011011000110111110101110010000",
+    "length": 36,
+    "distinct_windows": 36,
+    "covering_radius": 3,
+    "uncovered_targets": 0,
+    "provenance": "Attributed to the public CPro1 construction"
+  },
+  "limitations": [
+    "The exhaustive implementations are independently tested but not formally verified.",
+    "The length-36 witness is prior art and is not claimed as project-original.",
+    "No classification of all optimal length-36 sequences is claimed.",
+    "No external mathematical or peer review is claimed.",
+    "The public prior-art audit cannot exclude unpublished or unindexed work."
+  ]
+}

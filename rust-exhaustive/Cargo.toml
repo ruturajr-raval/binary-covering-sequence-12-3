@@ -1,0 +1,10 @@
+[package]
+name = "binary-covering-sequence-exhaustive"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "MIT"
+description = "Independent exhaustive checker for binary cyclic (12,3) covering sequences"
+publish = false
+
+[dependencies]

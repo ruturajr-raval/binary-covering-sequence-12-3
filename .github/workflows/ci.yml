@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.11.9"
+      - name: Tool versions
+        run: |
+          python --version
+          c++ --version
+          cargo --version
+          rustc --version
+      - name: Build
+        run: make PYTHON=python
+      - name: Test
+        run: make test PYTHON=python
+      - name: Verify exact result
+        run: make verify-exact-result PYTHON=python
+      - name: Install TeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended
+      - name: Build paper
+        run: make paper
+      - name: Upload paper
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: technical-report
+          path: build/paper/main.pdf
+          if-no-files-found: error
+      - name: Verify release manifest
+        run: make verify-release-manifest PYTHON=python
+      - name: Assert deterministic manifest
+        run: |
+          make release-manifest PYTHON=python
+          git diff --exit-code -- release-manifest.sha256
+      - name: Assert clean tree
+        if: always()
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain --untracked-files=all)"

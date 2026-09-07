@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status_date": "2026-09-07",
+  "theorem": "L(12,3) = 36",
+  "problem": {
+    "alphabet": "binary",
+    "window_length": 12,
+    "radius": 3
+  },
+  "upper_bound": {
+    "length": 36,
+    "sequence": "010100011011000110111110101110010000",
+    "sequence_file": "data/baseline-36.txt",
+    "sequence_file_sha256": "02bb4681195a71888260f535feaac94f7d45993e6b1ab63199dd369e9bf3eca1",
+    "covering_radius": 3,
+    "uncovered_targets": 0,
+    "provenance": "Attributed to the public CPro1 construction"
+  },
+  "lower_bound": {
+    "minimum_excluded_length": 1,
+    "maximum_excluded_length": 35,
+    "raw_sequences": 68719476734,
+    "symmetry_representatives": 506526514,
+    "covering_representatives": 0,
+    "symmetry": [
+      "cyclic rotation",
+      "reversal",
+      "bit complement"
+    ]
+  },
+  "implementations": {
+    "cpp": {
+      "source": "src/exhaustive.cpp",
+      "source_sha256": "e3341e8290eae37c75c3968de93a38b57f7d7763a2db60dc94881b151703a67d",
+      "log": "evidence/cpp-exhaustive-1-35.jsonl",
+      "log_sha256": "1f28c3ff550aa609ed811298c3ccc6099e64e291c563c25b7daf234503c64e1e",
+      "metadata": "evidence/cpp-exhaustive-1-35.json",
+      "metadata_sha256": "173636186e17645f44d868bd7c4a1b517664ed16be81635863a91a1fda0b6766"
+    },
+    "rust": {
+      "source": "rust-exhaustive",
+      "log": "evidence/rust-exhaustive-1-35.json",
+      "log_sha256": "501b9e2fd2501ac0941521fab992d05e29ce4c82fa33a2af995e5fa92a655701",
+      "metadata": "evidence/rust-exhaustive-1-35.metadata.json",
+      "metadata_sha256": "5c792b2058fdfddd342b1f78428d3c5ac045c6bf7dcec3319913137d4ad97c66"
+    }
+  },
+  "cross_checks": {
+    "matching_per_length_orbit_counts": 35,
+    "burnside_counts_match": true,
+    "witness_verifiers": [
+      "Python",
+      "Rust",
+      "C++"
+    ]
+  },
+  "closest_noncovering_representatives": [
+    {
+      "length": 34,
+      "uncovered_targets": 4,
+      "sequence": "0000100101110110011110110100010011"
+    },
+    {
+      "length": 35,
+      "uncovered_targets": 2,
+      "sequence": "00000100010011111011100111100101011"
+    }
+  ],
+  "limitations": [
+    "The exhaustive programs are independently tested but not formally verified.",
+    "No external mathematical or peer review is claimed.",
+    "The public prior-art audit cannot exclude unpublished or unindexed work."
+  ]
+}

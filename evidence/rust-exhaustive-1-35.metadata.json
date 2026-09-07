@@ -1,0 +1,35 @@
+{
+  "binary": "rust-exhaustive/target/release/binary-covering-sequence-exhaustive",
+  "binary_sha256": "f2198f1d83b7a1cf8988d095f6e442436e3f5183887e664f236c048072912432",
+  "build_command": [
+    "cargo",
+    "build",
+    "--release",
+    "--manifest-path",
+    "rust-exhaustive/Cargo.toml"
+  ],
+  "cargo": "cargo 1.96.1 (356927216 2026-06-26)",
+  "covering_representatives": 0,
+  "log": "evidence/rust-exhaustive-1-35.json",
+  "log_sha256": "501b9e2fd2501ac0941521fab992d05e29ce4c82fa33a2af995e5fa92a655701",
+  "maximum_length": 35,
+  "minimum_length": 1,
+  "result_count": 35,
+  "run_command": [
+    "rust-exhaustive/target/release/binary-covering-sequence-exhaustive",
+    "--range",
+    "1:35",
+    "--threads",
+    "12"
+  ],
+  "rustc": "rustc 1.96.1 (31fca3adb 2026-06-26)",
+  "schema_version": 1,
+  "source_sha256": {
+    "rust-exhaustive/Cargo.lock": "ae4df786a1fe0cb9c78f61dd82f15dbb8e41138ba7658f7bfdaafe43c431a1e0",
+    "rust-exhaustive/Cargo.toml": "e8e39ffe675883c0f3174fb77ef711ee155d4f17a72696bb4a0b09ee75bbcaea",
+    "rust-exhaustive/src/lib.rs": "86720e27e45cb28404013a413ff5e5d7d2d9935476a6d71d7d77548364c28ea9",
+    "rust-exhaustive/src/main.rs": "3cc3e81172ef43224cc44a7280043ccf2fb731e773dfff8bf4cf2b5435f20d14"
+  },
+  "status_date": "2026-09-07",
+  "threads": 12
+}

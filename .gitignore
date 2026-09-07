@@ -1,0 +1,10 @@
+build/
+dist/
+.tools/
+__pycache__/
+*.pyc
+rust-verifier/target/
+rust-exhaustive/target/
+.search-test-bin
+.search-sanitize-bin*
+.DS_Store

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "project": "binary-covering-sequence-12-3",
+  "evaluated_at": "2026-09-07",
+  "candidate_claim": "The exact computer-assisted theorem L(12,3) = 36",
+  "gates": {
+    "significant_original_result": true,
+    "complete_lower_bound_enumeration": true,
+    "independent_cpp_enumeration": true,
+    "independent_rust_enumeration": true,
+    "independent_burnside_counts": true,
+    "upper_witness_python_verifier_passes": true,
+    "upper_witness_rust_verifier_passes": true,
+    "upper_witness_cpp_verifier_passes": true,
+    "source_and_log_binding_complete": true,
+    "prior_art_refreshed": true,
+    "claim_scope_audited": true,
+    "limitations_documented": true,
+    "license_and_provenance_audited": true,
+    "candidate_clean_checkout_replay_passes": true,
+    "public_ci_passes": false,
+    "public_full_replay_passes": false,
+    "external_mathematical_review_completed": false
+  },
+  "decision": "release candidate",
+  "reason": "The exact theorem has passed local mathematical and implementation review plus clean-checkout workbench CI. Public CI, protected-tag replay, release-asset verification, and durable archival remain before the immutable release."
+}

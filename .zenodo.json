@@ -1,0 +1,23 @@
+{
+  "title": "Exact Determination of the Binary Covering-Sequence Length L(12,3)",
+  "upload_type": "software",
+  "description": "Technical report, exhaustive-search software, and source-bound evidence establishing L(12,3) = 36. Independent C++ and Rust traversals exclude all 68,719,476,734 binary sequences of positive lengths 1 through 35 through 506,526,514 rotation-reversal-complement representatives. A public attributed 36-bit witness is independently verified. Project-original material is MIT licensed; the normalized attributed witness remains under Apache-2.0.",
+  "creators": [
+    {
+      "name": "Raval, Ruturaj R",
+      "affiliation": "Independent Researcher",
+      "orcid": "0000-0003-4930-8981"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "covering sequences",
+    "coding theory",
+    "de Bruijn graph",
+    "exhaustive search",
+    "computer-assisted proof",
+    "extremal combinatorics",
+    "reproducible research"
+  ],
+  "version": "0.1.0"
+}
